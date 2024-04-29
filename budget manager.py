@@ -35,19 +35,23 @@ class Category:
     def check_funds(self, amount):
         return amount <= self.get_balance()
 
+#Now, we move on to the visuals part
+
     #Invoked by printing the category object
     #prints a datasheet about all transactions carried out in the category, as well as the total available balance
     #format below --.--
-
+#___________________________________________#
+#|                                          |
+#|    **********categoryname***********     |
+#|    Initial Deposit           X.X         |
+#|    Transaction[i]           -Y.Y[i]      |
+#|    Total: X.X - sum(Y.Y)                 |
+#|                                          |
+#___________________________________________#
     
-    #**********'categoryname'***********
-    #Initial Deposit           X.X
-    #Transaction[i]            -Y.Y[i] 
-    #Total: X.X - sum(Y.Y)
-
-    
-    def __str__(self):
-        title = f"{self.category:*^30}\n"
+#____________________________________________________________________________st__datasheet   
+    def __str__(self):                                                           
+        title = f"{self.category:*^30}\n"                                        
         items = ""
         total = 0
         for item in self.ledger:
@@ -55,10 +59,12 @@ class Category:
             total += item['amount']
         output = title + items + f"Total: {total:.2f}"
         return output
+#____________________________________________________________________________en__datasheet
+    
 
+    
     #creates a graph based on percentage of total spendings spent on specific categories
     #format below --.--
-
 #______________________________________#
 #|                                     |
 #|    Percentage Spent by Category     |
@@ -79,7 +85,7 @@ class Category:
 #|                                     |
 #______________________________________#
     
-    
+#___________________________________________________________________________st__chart
     def create_spend_chart(categories):
         category_names = []
         spent = []
@@ -124,6 +130,8 @@ class Category:
             graph += name_line
 
         return graph
+#___________________________________________________________________________en__chart
+
 
 
 #Things you can do:
