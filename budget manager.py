@@ -3,31 +3,45 @@ class Category:
         self.category = category
         self.ledger = []
 
+    #Function to deposit amount, alongside an additional (optional) reasoning 
     def deposit(self, amount, description=""):
         self.ledger.append({"amount": amount, "description": description})
-
+        
+    #Function to withdraw amount if enough balance is present, alongside an additional (optional) reasoning 
     def withdraw(self, amount, description=""):
         if self.check_funds(amount):
             self.ledger.append({"amount": -amount, "description": description})
             return True
         return False
 
+    #Function to check the total balance present 
     def get_balance(self):
         balance = 0
         for item in self.ledger:
             balance += item['amount']
         return balance
 
+#As of now, we have covered the basics: Depositing, Withdrawing, Checking Balance
+
+    #Transfers a certain amount to a certain category after withdrawing (if available)
     def transfer(self, amount, category):
         if self.check_funds(amount):
             self.withdraw(amount, f"Transfer to {category.category}")
             category.deposit(amount, f"Transfer from {self.category}")
             return True
         return False
-
+        
+    #Provides information if the transaction is possible or not by looking at the balance
     def check_funds(self, amount):
         return amount <= self.get_balance()
 
+    #Invoked by printing the category object
+    #prints a datasheet about all transactions carried out in the categor, as well as the total available balance
+    #format below --.--
+    #**********'categoryname'***********
+    #Initial Deposit           X.X
+    #Transaction[i]            -Y.Y[i] 
+    #Total: X.X - sum(Y.Y)
     def __str__(self):
         title = f"{self.category:*^30}\n"
         items = ""
@@ -38,8 +52,24 @@ class Category:
         output = title + items + f"Total: {total:.2f}"
         return output
 
-
-def create_spend_chart(categories):
+    #creates a graph based on percentage of total spendings spent on specific categories
+    #format:
+    #Percentage Spent by Category
+    #100|
+    # 90|
+    # 80|
+    # 70|
+    # 60|
+    # 50|
+    # 40|       o
+    # 30| o     o  
+    # 20| o     o
+    # 10| o  o  o
+    #  0| o  o  o
+    #    _____________
+    #     c  c  c
+    #     1  2  3
+    def create_spend_chart(categories):
     category_names = []
     spent = []
     spent_percentages = []
@@ -83,4 +113,3 @@ def create_spend_chart(categories):
         graph += name_line
 
     return graph
-
