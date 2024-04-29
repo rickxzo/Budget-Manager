@@ -36,7 +36,7 @@ class Category:
         return amount <= self.get_balance()
 
     #Invoked by printing the category object
-    #prints a datasheet about all transactions carried out in the categor, as well as the total available balance
+    #prints a datasheet about all transactions carried out in the category, as well as the total available balance
     #format below --.--
 
     
@@ -124,3 +124,14 @@ class Category:
             graph += name_line
 
         return graph
+
+
+#Things you can do:
+#  - Mention Category [ category = Category("desiredcategory") ]
+#  - Deposit Money [ category.deposit ( X , Y ) ]
+#  - Withdraw Money [ category.withdrw ( X , Y ) ]
+#  - Calculate Balance [ category.get_balance () ]
+#  - Transfer Money [ category.transfer ( X , Y {categorytotransferto} ) ]
+#  - Check if X amount is available or not [ category.check_funds ( X ) ]
+#  - Check all transactions [ print(category) ]
+#  - Check percentage of transction vs category [ create_spend_chart([list of categories]) ]
