@@ -38,10 +38,14 @@ class Category:
     #Invoked by printing the category object
     #prints a datasheet about all transactions carried out in the categor, as well as the total available balance
     #format below --.--
+
+    
     #**********'categoryname'***********
     #Initial Deposit           X.X
     #Transaction[i]            -Y.Y[i] 
     #Total: X.X - sum(Y.Y)
+
+    
     def __str__(self):
         title = f"{self.category:*^30}\n"
         items = ""
@@ -53,22 +57,29 @@ class Category:
         return output
 
     #creates a graph based on percentage of total spendings spent on specific categories
-    #format:
-    #Percentage Spent by Category
-    #100|
-    # 90|
-    # 80|
-    # 70|
-    # 60|
-    # 50|
-    # 40|       o
-    # 30| o     o  
-    # 20| o     o
-    # 10| o  o  o
-    #  0| o  o  o
-    #    _____________
-    #     c  c  c
-    #     1  2  3
+    #format below --.--
+
+#______________________________________#
+#|                                     |
+#|    Percentage Spent by Category     |
+#|    100|                             |
+#|     90|                             |
+#|     80|                             |
+#|     70|                             |
+#|     60|                             |
+#|     50|                             |
+#|     40|       o                     |
+#|     30| o     o                     |
+#|     20| o     o                     |
+#|     10| o  o  o                     |
+#|      0| o  o  o                     |
+#|        ----------                   |
+#|         c  c  c                     |
+#|         1  2  3                     |
+#|                                     |
+#______________________________________#
+    
+    
     def create_spend_chart(categories):
     category_names = []
     spent = []
